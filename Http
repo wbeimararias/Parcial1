@@ -1,3 +1,5 @@
+[root@servidorPXE ~]# vim /etc/dhcp/dhcpd.conf
+
 # DHCP Server Configuration file.
 
 ddns-update-style interim;
