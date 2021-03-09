@@ -1,0 +1,19 @@
+Túnel hacia servidor web usando vagrant + ngrok
+Herramientas instaladas
+
+Vagrant share-Maquina anfitrion
+vagrant plugin install vagrant-share
+
+Ngrok
+Se descargo dentro de la maquina servidor. En el siguiente directorio, vareable de entorno path
+cd  /usr/local/bin/
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip
+yum install unzip
+unzip /path/to/ngrok.zip
+./ngrok authtoken 1pS5CwGncuVYG2tJ1FTV0C07WNC_769ey85FCq1JzjyNwWqzp
+
+Port forwarding en Vagrant
+servidor.vm.network "forwarded_port", guest: 80, host: 3000
+
+Luego miramos si el túnel hacia el servidor web de nuestra maquina servidor funciona generándonos una URL publica con el siguiente comando.
+vagrant share servidor –http 3000
