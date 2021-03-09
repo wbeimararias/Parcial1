@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+ 
+config.vm.define :cliente1 do |cliente1|
+	cliente1.vm.box = "bento/centos-7.9"
+	cliente1.vm.network :private_network, ip: "192.168.50.2"
+	cliente1.vm.hostname = "cliente1"
+  end
+
+config.vm.define :cliente2 do |cliente2|
+	cliente2.vm.box = "bento/centos-7.9"
+	cliente2.vm.network :private_network, ip: "192.168.50.4"
+	cliente2.vm.hostname = "cliente2"
+  end
+
+config.vm.define :servidor do |servidor|
+	servidor.vm.box = "bento/centos-7.9"
+	servidor.vm.network :private_network, ip: "192.168.50.3"
+	servidor.vm.network "forwarded_port", guest: 80, host: 5080
+	servidor.vm.hostname = "servidor"
+  end
+
+config.vm.define :servidorPXE do |servidorPXE|
+	servidorPXE.vm.box = "bento/centos-7.9"
+	servidorPXE.vm.network :private_network, ip: "192.168.50.10"
+	servidorPXE.vm.hostname = "servidorPXE"
+  end
+end
